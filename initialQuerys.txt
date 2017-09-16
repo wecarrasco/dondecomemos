@@ -1,0 +1,118 @@
+db.restaurante.insert({
+  "nombre":"Carnitas del Anillo",
+  "sucursales":[{
+    "numero":1,
+    "direccion":"Col. Bella Oriente",
+    "latitud":"14.064176",
+    "longitud":"-87.180572",
+    "telefonos":["22332233", "12332155"],
+    "horario":{
+      "lunes":{
+        "entra":17,
+        "sale":22
+      },
+      "martes":{
+        "entra":17,
+        "sale":22
+      },
+      "miercoles":{
+        "entra":17,
+        "sale":22
+      },
+      "jueves":{
+        "entra":17,
+        "sale":22
+      },
+      "viernes":{
+        "entra":17,
+        "sale":22
+      },
+      "sabado":{
+        "entra":17,
+        "sale":22
+      },
+      "domingo":{
+        "entra":17,
+        "sale":22
+      }
+    }
+  },{
+    "numero":2,
+    "direccion":"Col. San Juan",
+    "latitud":"14.068737",
+    "longitud":"-87.168179",
+    "telefonos":["22552255", "55225522"],
+    "horario":{
+      "lunes":{
+        "entra":17,
+        "sale":22
+      },
+      "martes":{
+        "entra":17,
+        "sale":22
+      },
+      "miercoles":{
+        "entra":17,
+        "sale":22
+      },
+      "jueves":{
+        "entra":17,
+        "sale":22
+      },
+      "viernes":{
+        "entra":17,
+        "sale":22
+      },
+      "sabado":{
+        "entra":17,
+        "sale":22
+      },
+      "domingo":{
+        "entra":17,
+        "sale":22
+      }
+    }
+  }],
+  "menu":[{
+    "nombre":"Carne Sencilla",
+    "descripcion":"Pincho de carne de cerdo/res, frijoles, queso, encurtido y tortillas",
+    "precio":"55.00"
+  },{
+    "nombre":"Carne Doble",
+    "descripcion":"Dos pinchos de carne de cerdo/res, frijoles, queso, encurtido y tortillas",
+    "precio":"90.00"
+  }],
+  "comentarios":[{
+    "number":1,
+    "numero_sucursal":1,
+    "comentario":"Las mejores carnitas del mundo!",
+    "fecha":Date("2017-09-04T01:47:30.617Z"),
+    "cant_estrellas":5
+  },{
+    "number":2,
+    "numero_sucursal":1,
+    "comentario":"Las mejores carnitas del universo!",
+    "fecha":Date("2017-08-04T01:47:30.617Z"),
+    "cant_estrellas":5
+  }],
+  "fotos":["http://lorempixel.com/400/200/food/", "http://lorempixel.com/400/200/food/"],
+  "redes":{
+    "facebook":"https://www.facebook.com/CARNITAS-DEL-ANILLO-158115617583746/",
+    "correo":"carnitas@gnail.com",
+    "twitter":"@Carnitas"
+  },
+  "username" : "carnitas",
+  "password" : "carnitas",
+  "cant_favs" : 0,
+  "tags":"carne<>baleadas<>pupusas<>anillo"
+});
+
+
+
+db.promocion.insert({
+  "Tipo" : "Descuento",
+  "Vigencia" : "30/09/2017",
+  "Descripcion" : "50% de descuento en el Pity Asado",
+  "Producto" : "ID",
+  "Foto" : "http://lorempixel.com/400/200/food/"
+});

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 //import Home from './components/home.vue'
 import Dashboard from './components/dashboard.vue'
+import perfilRestaurante from './components/perfilRestaurante.vue'
 
 import VueRouter from 'vue-router'
 import VueResouce from 'vue-resource'
@@ -18,12 +19,17 @@ const router = new VueRouter({
     {
       name: 'LandingPage',
       path: '/',
-      component: Dashboard
+      component: perfilRestaurante
     },
     {
       name: 'Dashboard',
       path: '/home',
       component: Dashboard
+    },
+    {
+      name: 'PerfilRestaurante',
+      path: '/restaurante',
+      component: perfilRestaurante
     }
   ]
 });

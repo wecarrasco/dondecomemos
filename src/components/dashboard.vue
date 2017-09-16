@@ -1,35 +1,26 @@
 <template>
   <div class="cuerpo">
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a href="" class="navbar-brand">¿Dónde Comemos?</a>
+    <div class="row">
+      <div class="col-lg-3 wrapper-col">
+        <div class="restaurantes-en-mapa">
+          <div class="bloque"></div>
+          <div class="bloque"></div>
+          <div class="bloque"></div>
+          <div class="bloque"></div>
+          <div class="bloque"></div>
         </div>
-        <form class="navbar-form navbar-center" role="search">
-          <div class="form-group">
-            <input v-model="filtro_busqueda" type="text" class="form-control barra barra-cerrada barra-principal" placeholder="Search">
-            <button v-on:click="buscar" type="submit" class="btn btn-default boton-search">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
-            <button class="btn btn-default boton-search-avanzado">
-              <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </button>
-          </div>
-          <br>
-          <div class="grupo2 form-group">
-            <input type='text' class='form-control barra input-presupuesto barra-cerrada' placeholder='Presupuesto'>
-            <div class="grupo-extra">
-              <input type='text' class='form-control barra input-presupuesto barra-cerrada' placeholder='Ubicación'>
-              <button class="btn btn-default boton-gps">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-              </button>
-            </div>
-          </div>
-        </form>
+        <div class="restaurantes-favoritos">
+          <div class="bloque2"></div>
+          <div class="bloque2"></div>
+          <div class="bloque2"></div>
+          <div class="bloque2"></div>
+          <div class="bloque2"></div>
+        </div>
       </div>
-    </nav>
-
-    <div class="div-mapa" id="basic_map"></div>
+      <div class="col-lg-9 wrapper-col">
+        <div class="div-mapa" id="basic_map"></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -119,7 +110,7 @@ export default {
           }
         }
       });
-
+    return false;
     }
   },mounted(){
     var _this = this;
@@ -185,59 +176,94 @@ export default {
     });
 
     _this.traerRestaurantes();
-    $(document).ready(function(){
-      //size del mapa relativo al navbar
-      let navSize = $(".navbar").height();
-      $(".div-mapa").css("height", "100vh").css("height", "-="+navSize);
-
-      let barras = document.getElementsByClassName("barra");
-      let avanzado = false;
-      $(".boton-search-avanzado").click(function(){
-        if (avanzado === false) {
-          for (var i = 0; i < barras.length; i++) {
-            $(barras[i]).animate({width: '+=380px'}, 300);
-          }
-          $(".navbar").animate({height: '+=80px'}, 200);
-          $(".input-presupuesto").css("visibility","visible");
-        }else if(avanzado === true){
-          for (var i = 0; i < barras.length; i++) {
-            $(barras[i]).animate({width: '-=380px'}, 300);
-          }
-          $(".navbar").animate({height: '-=80px'}, 200);
-          $(".input-presupuesto").css("visibility","hidden");
-        };
-        avanzado = !avanzado;
-      });
-
-      let searchClick = false;
-      $(".barra-principal").focusin(function(){
-        if (avanzado === false && searchClick === false) {
-          $(".barra-principal").animate({width: '+=380px'}, 300);
-        }
-        searchClick = !searchClick;
-      });
-
-      $(".barra-principal").focusout(function(){
-        if (avanzado === false && searchClick === true) {
-          $(".barra-principal").animate({width: '-=380px'}, 300);
-        }
-        searchClick = !searchClick;
-      });
-
-
-      $(window).resize(function() {
-        //console.log("simon")
-        google.maps.event.trigger(_this.mapa, 'resize');
-        let navSize = $(".navbar").height();
-        $(".div-mapa").css("height", "100vh").css("height", "-="+navSize);
-      });
-      google.maps.event.trigger(_this.mapa, 'resize');
-    });
+    // $(document).ready(function(){
+    //   //size del mapa relativo al navbar
+    //   let navSize = $(".navbar").height();
+    //   $(".div-mapa").css("height", "100vh").css("height", "-="+navSize);
+    //
+    //   let barras = document.getElementsByClassName("barra");
+    //   let avanzado = false;
+    //   $(".boton-search-avanzado").click(function(){
+    //     if (avanzado === false) {
+    //       for (var i = 0; i < barras.length; i++) {
+    //         $(barras[i]).animate({width: '+=380px'}, 300);
+    //       }
+    //       $(".navbar").animate({height: '+=80px'}, 200);
+    //       $(".input-presupuesto").css("visibility","visible");
+    //     }else if(avanzado === true){
+    //       for (var i = 0; i < barras.length; i++) {
+    //         $(barras[i]).animate({width: '-=380px'}, 300);
+    //       }
+    //       $(".navbar").animate({height: '-=80px'}, 200);
+    //       $(".input-presupuesto").css("visibility","hidden");
+    //     };
+    //     avanzado = !avanzado;
+    //     return false;
+    //   });
+    //
+    //   let searchClick = false;
+    //   $(".barra-principal").focusin(function(){
+    //     if (avanzado === false && searchClick === false) {
+    //       $(".barra-principal").animate({width: '+=380px'}, 300);
+    //     }
+    //     searchClick = !searchClick;
+    //   });
+    //
+    //   $(".barra-principal").focusout(function(){
+    //     if (avanzado === false && searchClick === true) {
+    //       $(".barra-principal").animate({width: '-=380px'}, 300);
+    //     }
+    //     searchClick = !searchClick;
+    //   });
+    //
+    //
+    //   $(window).resize(function() {
+    //     google.maps.event.trigger(_this.mapa, 'resize');
+    //     let navSize = $(".navbar").height();
+    //     $(".div-mapa").css("height", "100vh").css("height", "-="+navSize);
+    //   });
+    //   let heighentre2 = $(".navbar").height()/2;
+    //   $(".restaurantes-en-mapa").css("height", "50vh").css("height", "-="+heighentre2);
+    //   $(".restaurantes-favoritos").css("height", "50vh").css("height", "-="+heighentre2);
+    //   google.maps.event.trigger(_this.mapa, 'resize');
+    // });
   }
 };
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
+
+htlm{
+  overflow: hidden;
+}
+
+.wrapper-col{
+  padding: 0;
+}
+
+.restaurantes-en-mapa{
+  height: 50vh;
+  background-color: red;
+  overflow-y: scroll;
+}
+
+.restaurantes-favoritos{
+  height: 50vh;
+  background-color: red;
+  overflow-y: scroll;
+}
+
+.bloque{
+  height: 130px;
+  background-color: blue;
+  border: 2px solid black;
+}
+
+.bloque2{
+  height: 130px;
+  background-color: red;
+  border: 2px solid black;
+}
 
 .div-mapa{
   height: 100vh;
@@ -249,26 +275,6 @@ export default {
   min-height: 100%;
 }
 
-.navbar-center {
-  position: absolute;
-  left: 50%;
-  transform: translatex(-50%);
-  display: block !important;
-}
-
-input.barra{
-  padding-left: 15px;
-  width: 50%;
-}
-
-.navbar{
-  height: 100%;
-  margin-bottom: 0;
-}
-
-.input-presupuesto{
-  visibility: hidden;
-}
 
 
 </style>
